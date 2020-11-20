@@ -4,36 +4,37 @@
 
 namespace nc
 {
-	bool Texture::Create(const std::string& name, void* renderer)
-	{
-		m_renderer = static_cast<Renderer*>(renderer)->m_renderer;
+    bool Texture::Create(const std::string& name, void* null)
+    {
+        return CreateTexture(name);
+    }
 
-		SDL_Surface* surface = nullptr; // IMG_Load(name.c_str()); // loads sf2.bmp from Build
-		if (surface == nullptr)
-		{
-			std::cout << "Error: " << SDL_GetError() << std::endl;
-			SDL_Quit();
-			return false;
-		}
+    void Texture::Destroy()
+    {
+        glDeleteTextures(1, &m_texture);
+    }
 
-		m_texture = SDL_CreateTextureFromSurface(m_renderer, surface);
-		SDL_FreeSurface(surface);
-		if (m_texture == nullptr)
-		{
-			std::cout << "Error: " << SDL_GetError() << std::endl;
-			SDL_Quit();
-			return false;
-		}
+    bool Texture::CreateTexture(const std::string& filename, GLenum target, GLuint unit)
+    {
+        SDL_Surface* surface = IMG_Load(filename.c_str());
+        if (surface == nullptr)
+        {
+            SDL_Log("Failed to create surface: %s", SDL_GetError());
+            return false;
+        }
 
+        glGenTextures(1, &m_texture);
+        glBindTexture(target, m_texture);
 
+        GLenum format = (surface->format->BytesPerPixel == 4) ? GL_RGBA : GL_RGB;
+        glTexImage2D(target, 0, format, surface->w, surface->h, 0, format, GL_UNSIGNED_BYTE, surface->pixels);
 
-		return true;
-	}
+        glTexParameteri(target, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+        glTexParameteri(target, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+        glTexParameteri(target, GL_TEXTURE_WRAP_S, GL_CLAMP);
+        glTexParameteri(target, GL_TEXTURE_WRAP_T, GL_CLAMP);
 
-	void Texture::Destroy()
-	{
-		//delete m_texture;
-		SDL_DestroyTexture(m_texture);
-	}
-
+        return true;
+    }
 }
+
