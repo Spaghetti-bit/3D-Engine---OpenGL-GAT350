@@ -75,6 +75,18 @@
     <ClCompile Include="Engine\Graphics\Program.cpp">
       <Filter>Source Files\Engine\Graphics</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Graphics\VertexArray.cpp">
+      <Filter>Source Files\Engine\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Engine.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Graphics\VertexIndexArray.cpp">
+      <Filter>Source Files\Engine\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Graphics\Model.cpp">
+      <Filter>Source Files\Engine\Graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Core\Assert.h">
@@ -122,12 +134,36 @@
     <ClInclude Include="Engine\Graphics\Program.h">
       <Filter>Source Files\Engine\Graphics</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\Engine.h">
+      <Filter>Source Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Graphics\VertexArray.h">
+      <Filter>Source Files\Engine\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Graphics\VertexIndexArray.h">
+      <Filter>Source Files\Engine\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Graphics\Model.h">
+      <Filter>Source Files\Engine\Graphics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Build\Shaders\basic.vert">
       <Filter>Resources\Shaders</Filter>
     </None>
     <None Include="..\Build\Shaders\basic.frag">
+      <Filter>Resources\Shaders</Filter>
+    </None>
+    <None Include="..\Build\Shaders\gouraud.frag">
+      <Filter>Resources\Shaders</Filter>
+    </None>
+    <None Include="..\Build\Shaders\gouraud.vert">
+      <Filter>Resources\Shaders</Filter>
+    </None>
+    <None Include="..\Build\Shaders\phong.frag">
+      <Filter>Resources\Shaders</Filter>
+    </None>
+    <None Include="..\Build\Shaders\phong.vert">
       <Filter>Resources\Shaders</Filter>
     </None>
   </ItemGroup>
