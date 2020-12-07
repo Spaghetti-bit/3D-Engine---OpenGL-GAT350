@@ -4,6 +4,7 @@
 
 in vec3 fs_position;
 in vec3 fs_normal;
+in vec2 fs_texcoord;
 
 out vec4 out_color;
 
@@ -26,6 +27,8 @@ struct Light
 };
 
 uniform Light light;
+
+uniform sampler2D texture_sample;
 
 void main()
 {
@@ -53,6 +56,6 @@ void main()
 
     
 
-    out_color = vec4(ambient + diffuse + specular, 1);
+    out_color = vec4(ambient + diffuse, 1) * texture(texture_sample, fs_texcoord) + vec4(specular, 1);
 	//out_color = texture(baseTexture, fs_uv);
 }

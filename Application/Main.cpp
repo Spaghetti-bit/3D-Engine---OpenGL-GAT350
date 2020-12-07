@@ -120,7 +120,7 @@ int main(int argc, char** argv)
 	std::vector<glm::vec3> positions;
 	std::vector<glm::vec3> normals;
 	std::vector<glm::vec2> texcoords;
-	nc::Model::Load("models/dragon.obj", positions, normals, texcoords);
+	nc::Model::Load("models/ogre.obj", positions, normals, texcoords);
 
 	if (!positions.empty()) // Position
 	{
@@ -180,7 +180,7 @@ int main(int argc, char** argv)
 	glm::mat4 view = glm::lookAt(eye, glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
 
 	nc::Texture texture;
-	texture.CreateTexture("textures\\birbOwl.png");
+	texture.CreateTexture("textures\\ogre_diffuse_flip.bmp");
 	
 	program.SetUniform("transform", model);
 	
@@ -190,7 +190,7 @@ int main(int argc, char** argv)
 	program.SetUniform("material.shininess", 32.0f);
 
 	program.SetUniform("light.ambient", glm::vec3{ 0.1f, 0.1f, 0.1f });
-	program.SetUniform("light.diffuse", glm::vec3{ 0, 1, 1 });
+	program.SetUniform("light.diffuse", glm::vec3{ 1, 1, 1 });
 	program.SetUniform("light.specular", glm::vec3{ 1, 1, 1 });
 
 	glm::vec4 light{ 5, 2, 5, 1 };
@@ -237,31 +237,31 @@ int main(int argc, char** argv)
 		
 		if (engine.GetSystem<nc::InputSystem>()->GetButtonState(SDL_SCANCODE_A) == nc::InputSystem::eButtonState::HELD)
 		{
-			eye.x -= 4 * engine.GetTimer().DeltaTime();
+			eye.x -= 2 * engine.GetTimer().DeltaTime();
 		}
 
 		if (engine.GetSystem<nc::InputSystem>()->GetButtonState(SDL_SCANCODE_D) == nc::InputSystem::eButtonState::HELD)
 		{
-			eye.x += 4 * engine.GetTimer().DeltaTime();
+			eye.x += 2 * engine.GetTimer().DeltaTime();
 		}
 
 		if (engine.GetSystem<nc::InputSystem>()->GetButtonState(SDL_SCANCODE_W) == nc::InputSystem::eButtonState::HELD)
 		{
-			eye.y -= 4 * engine.GetTimer().DeltaTime();
+			eye.y -= 2 * engine.GetTimer().DeltaTime();
 		}
 
 		if (engine.GetSystem<nc::InputSystem>()->GetButtonState(SDL_SCANCODE_S) == nc::InputSystem::eButtonState::HELD)
 		{
-			eye.y += 4 * engine.GetTimer().DeltaTime();
+			eye.y += 2 * engine.GetTimer().DeltaTime();
 		}
 		if (engine.GetSystem<nc::InputSystem>()->GetButtonState(SDL_SCANCODE_Z) == nc::InputSystem::eButtonState::HELD)
 		{
-			eye.z -= 4 * engine.GetTimer().DeltaTime();
+			eye.z -= 2 * engine.GetTimer().DeltaTime();
 		}
 
 		if (engine.GetSystem<nc::InputSystem>()->GetButtonState(SDL_SCANCODE_C) == nc::InputSystem::eButtonState::HELD)
 		{
-			eye.z += 4 * engine.GetTimer().DeltaTime();
+			eye.z += 2 * engine.GetTimer().DeltaTime();
 		}
 
 		view = glm::lookAt(eye, eye + glm::vec3{ 0, 0, -1 }, glm::vec3{ 0, 1, 0 });

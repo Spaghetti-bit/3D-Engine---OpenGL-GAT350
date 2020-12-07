@@ -87,6 +87,12 @@
     <ClCompile Include="Engine\Graphics\Model.cpp">
       <Filter>Source Files\Engine\Graphics</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Math\Transform.h">
+      <Filter>Source Files\Engine\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Math\Transform.cpp">
+      <Filter>Source Files\Engine\Math</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Core\Assert.h">
